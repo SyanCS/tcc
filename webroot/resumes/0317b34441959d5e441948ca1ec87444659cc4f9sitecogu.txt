@@ -1,0 +1,75 @@
+1. Página central, levando para todas as ramificações do site. No caso, seria o www.cogumelando.com.br. 
+- Algumas áreas serão dentro do site, outras fora. Quanto à solução de design, pensei em algo leve e direcionando à videogames também. É algo que posso
+pensar melhor no decorrer de nossa conversa. Mas, ao mesmo tempo, que seja algo fluído e não quebre o layout caso eu precise tirar alguma área ou 
+acrescentar. Por hora, essa página principal vai direcionar para: grupo no Facebook, página, Twitter, canal de streams, área de blog e colunas, área de stream em
+PT e EN, memória Cogumelando, canal de youtube e afins. Como o Cogumelando não é apenas o blog, essa página servirá como caminho para o que quer que
+as pessoas busquem lá. E como planejo acrescentar outras áreas no futuro, seria legal que fosse possível adicionar facilmente sem precisar mexer no layout
+em si.
+
+R: com menu e area com atraçoes cogumelando colocar na vertical
+
+
+2. Área de blogs, colunas e afins. 
+- Básicamente o que há atualmente, mas incorporando o que uso em forma de plugin como algo dentro do site mesmo. Um possível sistema de login, seguro, 
+seria bem vindo, já que pretendo colocar colunistas lá. Por hora é 1, no futuro talvez tenhamos mais.
+
+R: plugins para alterar Contact Form - falecomigo@cogumelando.com.br
+Dynamic to Top
+EWWW Image Optimizer
+Fix facebook like
+lazy load
+related posts	
+TinyMCE Avançado
+WP Hide Pos
+Viper's Video Quicktags Migrator
+Slimstat Analytics
+Wordfence Security
+notificaçoes tipo leninja
+
+site referencia http://jogabilida.de/
+
+assim que abiri ordenar por ordem de lançamento, porem botao para reordenar por ordem de acessados etc...
+ 
+
+- Uma área para se listar todos os posts por autor ou data,
+como em jornais colocando em uma lista os artigos de determinados colunistas. E a possibilidade de mostrar um artigo aleatório, ou seja, apertar um botão e 
+aparecer algo aleatório.
+
+R: mostrar posts da pessoa relacionada, colunista. olhar site jornal
+
+ 
+- Organização geral mostrando o mais novo e o mais acessado. 
+
+
+3. Com o mesmo design do Cogumelando, uma área voltada para as streams. Como funciona o sistema de experiência, Game Shop e mais, tudo relacionado lá.
+Possibilidade de navegar essa área em português e inglês. Só precisaria mesmo do sistema formado e uma forma de converter os textos ou direcionar a 
+outro lugar, realmente não sei como funciona. Cuidarei da parte de tradução
+
+R ser duas paginas stream pt e stram br
+
+
+4. Memória Cogumelando. Esta parte, com design especifico, irá unir desde as fanarts até screenshots antigos, histórias, relatos, tudo nesses quase 10 anos de
+    Cogumelando. Este poderia ser um subdomínio. 
+
+R: https://web.archive.org clica rmostrar o que rolou naquele coiso especifico
+
+   http://www.cogumelando.com.br/temporada2dafm/
+
+
+
+
+5. Instalação do servidor, Linux, o mais fluído e leve possível.
+
+MISC:
+- No geral, todas as áreas terão as mesmas mecânicas. Ir para o topo, imagens carregarem conforme forem carregadas, artigos aleatórios, postagens
+relacionadas, thumbnail do Facebook funcionando (problema recorrente no Wordpress).
+
+- Gostaria de um layout que fosse de fácil execução futura, sem precisar "quebrar nada" para mexer. Ou seja, que só dê para acrescentar e afins. Pretendo manter
+esse layout por um bom tempo, então é bem provável que nesse período mudanças no conteúdo ocorram. 
+
+E é isso. Portar as informações eu consigo fazer, até mesmo para aprender a lidar com o novo sistema. O ideal é que nada do servidor antigo seja expressamente
+levado, já que não pretendo perpetuar os bugs do Cogumelando atual. Aquele sistema do Card System, com o qual começamos nossa conversa, pode ser algo 
+considerado no futuro. E talvez, ainda não tenho confirmação, haja uma área no Cogumelando para o nosso sistema de RPG de mesa, o DFS. Mas ainda preciso
+confirmação dos dois outros cabeças.
+
+Qualquer coisa que faltar ou precisar detalhes, a gente acrescenta. 
