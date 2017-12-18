@@ -55,8 +55,7 @@ class MainInfosTable extends Table
 
         $validator
             ->scalar('photo')
-            ->requirePresence('photo', 'create')
-            ->notEmpty('photo');
+            ->allowEmpty('photo');
 
         $validator
             ->scalar('name')

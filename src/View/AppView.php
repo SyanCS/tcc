@@ -14,6 +14,8 @@
 namespace App\View;
 
 use Cake\View\View;
+use \Cake\Core\App;
+use \Cake\Utility\Inflector;
 
 /** 
  * Application View

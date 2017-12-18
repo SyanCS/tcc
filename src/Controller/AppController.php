@@ -97,8 +97,8 @@ class AppController extends Controller
                 break;
 
             default:
-                $this->viewBuilder()->theme('AdminLTE');
-                $this->viewBuilder()->className('AdminLTE.AdminLTE');
+                $this->viewBuilder()->layout('AdminLTE');
+                //$this->viewBuilder()->className('AdminLTE.AdminLTE');
                 break;
         }
 

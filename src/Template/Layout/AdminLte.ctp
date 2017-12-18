@@ -35,16 +35,16 @@
             <!-- Logo -->
             <a href="<?php echo $this->Url->build('/'); ?>" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><?php echo Configure::read('Theme.logo.mini'); ?></span>
+                <span class="logo-mini"><?php echo 'UFF'; ?></span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><?php echo Configure::read('Theme.logo.large'); ?></span>
+                <span class="logo-lg"><?php echo 'UFF'; ?></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
-            <?php echo $this->element('nav-top') ?>
+            <?php echo $this->element('AdminLTE.nav-top') ?>
         </header>
 
         <!-- Left side column. contains the sidebar -->
-        <?php echo $this->element('aside-main-sidebar'); ?>
+        <?php echo $this->element('AdminLTE.aside-main-sidebar'); ?>
 
         <!-- =============================================== -->
 
@@ -58,10 +58,10 @@
         </div>
         <!-- /.content-wrapper -->
 
-        <?php echo $this->element('footer'); ?>
+        <?php echo $this->element('AdminLTE.footer'); ?>
 
         <!-- Control Sidebar -->
-        <?php echo $this->element('aside-control-sidebar'); ?>
+        <?php echo $this->element('AdminLTE.aside-control-sidebar'); ?>
 
         <!-- /.control-sidebar -->
 <!-- Add the sidebar's background. This div must be placed

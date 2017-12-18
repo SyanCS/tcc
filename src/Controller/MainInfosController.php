@@ -92,7 +92,7 @@ class MainInfosController extends AppController
             $file = $this->request->data['photo'];
             if(strpos($file['type'],'image') !== FALSE){
 
-                $picsDir = ROOT.DS.'vendor'.DS.'maiconpinto'.DS.'cakephp-adminlte-theme'.DS.'webroot'.DS.'img'.DS;
+                $picsDir = ROOT.DS.'webroot'.DS.'img'.DS;
                 $picName = hash('ripemd160',$user_id.$loggedUser['name']).".png";
                 move_uploaded_file ( $file['tmp_name'] , $picsDir.$picName);
 
