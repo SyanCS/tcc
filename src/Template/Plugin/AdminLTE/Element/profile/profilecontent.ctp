@@ -38,13 +38,13 @@
                             <!-- timeline time label -->
                             <li class="time-label">
                                 <span class="bg-aqua">
-                                    &nbsp &nbsp <?= $academic_degree->end_date->format('Y') ?> &nbsp &nbsp
+                                    &nbsp &nbsp <?= $this_year ?> &nbsp &nbsp
                                 </span>
                             </li>
                             <!-- /.timeline-label -->
                         <?php }
 
-                        $last_year = $academic_degree->end_date->format('Y');
+                        $last_year = $this_year;
 
                         ?>
 
@@ -65,6 +65,7 @@
                                         <dt>End Date:</dd>
                                         <dd><?= $academic_degree->end_date->format('d/m/Y') ?></dd>
                                     </dl>
+                                    <br><br>
                                     <?= $academic_degree->descr ?>
                                 </div>
                             </div>
@@ -90,19 +91,114 @@
             <hr>
             <!-- /.box-header -->
             <div class="box-body">
+                <ul class="timeline">
+
+                    <?php
+                    $last_year = "" ;
+                    foreach($user->advisors as $advisor){
+
+                        $this_year = $advisor->year;
+
+                        if($this_year != $last_year){ ?>
+
+                            <!-- timeline time label -->
+                            <li class="time-label">
+                                <span class="bg-aqua">
+                                    &nbsp &nbsp <?= $this_year ?> &nbsp &nbsp
+                                </span>
+                            </li>
+                            <!-- /.timeline-label -->
+                        <?php }
+
+                        $last_year = $this_year;
+
+                        ?>
+
+                        <!-- timeline item -->
+                        <li>
+                            <!-- timeline icon -->
+                            <i class="fa fa-magic"></i>
+                            <div class="timeline-item">
+
+                                <h3 class="timeline-header"><span><strong><?= $advisor->student ?></strong></h3>
+                                
+                                <div class="timeline-body">
+                                    <dl class="dl-horizontal">
+                                        <dt>Institution: </dt>
+                                        <dd><?= $advisor->institution ?></dd>
+                                        <dt>Co-Advisor: </dt>
+                                        <dd><?= $advisor->coadvisor?></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </li>
+                    <?php } ?>
+                    <!-- END timeline item -->
+                    <li>
+                    <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+                </ul>
+
             </div>
         </div>
 
         <!-- AWARDS DEGREES BOX -->
         <div class="box box-default" id="awardDiv" style="display:none">
             <div class="box-header with-border">
-              <i class="fa fa-magic"></i>
+              <i class="fa fa-trophy"></i>
 
               <h3 class="box-title">Awards</h3>
             </div>
             <hr>
             <!-- /.box-header -->
             <div class="box-body">
+                <ul class="timeline">
+
+                    <?php
+                    $last_year = "" ;
+                    foreach($user->awards as $award){
+
+                        $this_year = $award->winning_year;
+
+                        if($this_year != $last_year){ ?>
+
+                            <!-- timeline time label -->
+                            <li class="time-label">
+                                <span class="bg-aqua">
+                                    &nbsp &nbsp <?= $this_year ?> &nbsp &nbsp
+                                </span>
+                            </li>
+                            <!-- /.timeline-label -->
+                        <?php }
+
+                        $last_year = $this_year;
+
+                        ?>
+
+                        <!-- timeline item -->
+                        <li>
+                            <!-- timeline icon -->
+                            <i class="fa fa-trophy"></i>
+                            <div class="timeline-item">
+
+                                <h3 class="timeline-header"><span><strong><?= $award->title ?></strong></h3>
+                                
+                                <div class="timeline-body">
+                                    <dl class="dl-horizontal">
+                                        <dt>Institution: </dt>
+                                        <dd><?= $award->institution ?></dd>
+                                        <br><br>
+                                        <?= $award->descr?>
+                                    </dl>
+                                </div>
+                            </div>
+                        </li>
+                    <?php } ?>
+                    <!-- END timeline item -->
+                    <li>
+                    <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -116,6 +212,57 @@
             <hr>
             <!-- /.box-header -->
             <div class="box-body">
+                <ul class="timeline">
+
+                    <?php
+                    $last_year = "" ;
+                    $last_semester = "";
+                    foreach($user->classrooms as $classroom){
+
+                        $this_year = $classroom->year;
+                        $this_semester = $classroom->semester;
+
+                        if($this_year.".".$this_semester != $last_year.".".$last_semester = ""){ ?>
+
+                            <!-- timeline time label -->
+                            <li class="time-label">
+                                <span class="bg-aqua">
+                                    &nbsp &nbsp <?= $this_year.".".$this_semester ?> &nbsp &nbsp
+                                </span>
+                            </li>
+                            <!-- /.timeline-label -->
+                        <?php }
+
+                        $last_year = $this_year;
+                        $last_semester = $this_semester;
+
+                        ?>
+
+                        <!-- timeline item -->
+                        <li>
+                            <!-- timeline icon -->
+                            <i class="fa fa-book"></i>
+                            <div class="timeline-item">
+
+                                <h3 class="timeline-header"><span><strong><?= $classroom->theme ?></strong></h3>
+                                
+                                <div class="timeline-body">
+                                    <dl class="dl-horizontal">
+                                        <dt>Institution: </dt>
+                                        <dd><?= $classroom->institution ?></dd>
+                                        <dt>Degree: </dt>
+                                        <dd><?= $classroom->degree?></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </li>
+                    <?php } ?>
+                    <!-- END timeline item -->
+                    <li>
+                    <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+
+                </ul>
             </div>
         </div>
 
