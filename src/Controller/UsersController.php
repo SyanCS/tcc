@@ -80,6 +80,25 @@ class UsersController extends AppController
         $this->set('_serialize', ['users']);
     }
 
+
+    public function profile($id = null)
+    {
+
+        if($id == null){
+            $loggedUser = $this->Auth->user();
+            $id = $loggedUser['id'];
+        }
+
+
+        $user = $this->Users->get($id, [
+            'contain' => ['UsersTypes', 'AcademicDegrees', 'Advisors', 'Awards', 'Classrooms', 'MainInfos', 'ProfitionalPositions', 'Publications', 'Researchs', 'Resumes']
+        ]);
+
+        $this->set('user', $user);
+        $this->set('_serialize', ['user']);
+    }
+
+
     /**
      * View method
      *

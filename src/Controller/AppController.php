@@ -91,9 +91,13 @@ class AppController extends Controller
             case 'login':
                 $this->viewBuilder()->layout('login');
                 break;
-            case 'forgot' :
+            case 'forgot':
             case 'register':
                 $this->viewBuilder()->layout('register');
+                break;
+
+            case 'profile':
+                $this->viewBuilder()->layout('ajax');
                 break;
 
             default:

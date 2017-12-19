@@ -23,11 +23,23 @@ if (file_exists($file)) {
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="<?php echo $this->Url->build('/main-infos/edit'); ?>"><i class="fa fa-circle-o"></i> Edit</a></li>
+            <li><a href="<?php echo $this->Url->build('/users/profile'); ?>"><i class="fa fa-circle-o"></i> View</a></li>
+            <li><a href="<?php echo $this->Url->build('/users/generate'); ?>"><i class="fa fa-circle-o"></i> Generate Profile</a></li>
             <li><a href="<?php echo $this->Url->build('/users/logout'); ?>"><i class="fa fa-circle-o"></i> Sign out</a></li>
         </ul>
     </li>
     <li class="header">MY INFOS</li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-info"></i> <span> Intro</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="<?php echo $this->Url->build('/main-infos/edit'); ?>"><i class="fa fa-circle-o"></i> Edit</a></li>
+        </ul>
+    </li>
     <li class="treeview">
         <a href="#">
             <i class="fa  fa-graduation-cap"></i> <span>Academic Degrees</span>
