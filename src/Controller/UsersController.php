@@ -91,7 +91,31 @@ class UsersController extends AppController
 
 
         $user = $this->Users->get($id, [
-            'contain' => ['UsersTypes', 'AcademicDegrees', 'Advisors', 'Awards', 'Classrooms', 'MainInfos', 'ProfitionalPositions', 'Publications', 'Researchs', 'Resumes']
+            'contain' => [
+                'AcademicDegrees' => [
+                    'sort' => ['AcademicDegrees.end_date' => 'ASC'],
+                ], 
+                'Advisors' => [
+                    'sort' => ['Advisors.year' => 'ASC']
+                ],  
+                'Awards' => [
+                    'sort' => ['Awards.winning_year' => 'ASC']
+                ],  
+                'Classrooms' => [
+                    'sort' => ['Classrooms.year' => 'ASC', 'Classrooms.semester' => 'ASC' ]
+                ],  
+                'ProfitionalPositions' => [
+                    'sort' => ['ProfitionalPositions.end_date' => 'ASC']
+                ],  
+                'Publications' => [
+                    'sort' => ['Publications.year' => 'ASC']
+                ],  
+                'Researchs' => [
+                    'sort' => ['Researchs.end_date' => 'ASC']
+                ],
+                'MainInfos',   
+                'Resumes'
+            ]
         ]);
 
         $this->set('user', $user);

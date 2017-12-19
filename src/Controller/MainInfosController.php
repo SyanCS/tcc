@@ -90,26 +90,32 @@ class MainInfosController extends AppController
             //dump($this->request->data);exit;
             $this->request->data['user_id'] = "{$user_id}";
             $file = $this->request->data['photo'];
-            if(strpos($file['type'],'image') !== FALSE){
+            //dump($file);exit;
 
-                $picsDir = ROOT.DS.'webroot'.DS.'img'.DS;
-                $picName = hash('ripemd160',$user_id.$loggedUser['name']).".png";
-                move_uploaded_file ( $file['tmp_name'] , $picsDir.$picName);
+            if(!empty($file['tmp_name'])){
 
-                $this->request->data['photo'] = hash('ripemd160',$user_id.$loggedUser['name']).".png";
+                if(strpos($file['type'],'image') !== FALSE){
 
-                if(!$mainInfo){
-                    $mainInfo = $this->MainInfos->newEntity();
-                }
-                $mainInfo = $this->MainInfos->patchEntity($mainInfo, $this->request->data);
-                if ($this->MainInfos->save($mainInfo)) {
-                    $this->Flash->success(__('The {0} has been saved.', 'Main Info'));
-                    return $this->redirect(['action' => 'edit']);
-                } else {
-                    $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Main Info'));
-                }
-            }else {
-                $this->Flash->error(__('The {0} could not be saved. Photo must be an Image, try again.', 'Main Info'));  
+                    $picsDir = ROOT.DS.'webroot'.DS.'img'.DS;
+                    $picName = hash('ripemd160',$user_id.$loggedUser['name']).".png";
+                    move_uploaded_file ( $file['tmp_name'] , $picsDir.$picName);
+                    $this->request->data['photo'] = hash('ripemd160',$user_id.$loggedUser['name']).".png";
+                }else {
+                    $this->Flash->error(__('The {0} could not be saved. Photo must be an Image, try again.', 'Main Info'));  
+                }   
+            } else{
+                $this->request->data['photo'] = $mainInfo->photo;
+            }
+
+            if(!$mainInfo){
+                $mainInfo = $this->MainInfos->newEntity();
+            }
+            $mainInfo = $this->MainInfos->patchEntity($mainInfo, $this->request->data);
+            if ($this->MainInfos->save($mainInfo)) {
+                $this->Flash->success(__('The {0} has been saved.', 'Main Info'));
+                return $this->redirect(['action' => 'edit']);
+            } else {
+                $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Main Info'));
             }
         }
 

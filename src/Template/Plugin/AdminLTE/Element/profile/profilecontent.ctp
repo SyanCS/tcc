@@ -10,6 +10,7 @@
             <hr>
             <!-- /.box-header -->
             <div class="box-body">
+                <?= $user->main_infos[0]->intro; ?>
             </div>
         </div>
 
@@ -21,9 +22,50 @@
               <h3 class="box-title">Academic Degrees</h3>
             </div>
             <hr>
-            <hr>
             <!-- /.box-header -->
             <div class="box-body">
+
+                <ul class="timeline">
+
+                    <?php foreach($user->academic_degrees as $academic_degree){ ?>
+
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                            <span class="bg-aqua">
+                                <?= $academic_degree->end_date ?>
+                            </span>
+                        </li>
+                        <!-- /.timeline-label -->
+
+                        <!-- timeline item -->
+                        <li>
+                            <!-- timeline icon -->
+                            <i class="fa fa-graduation-cap"></i>
+                            <div class="timeline-item">
+
+                                <h3 class="timeline-header"><span><strong><?= $academic_degree->degree ?></strong> - <?= $academic_degree->title ?></h3>
+                                
+                                <div class="timeline-body">
+                                    <dl class="dl-horizontal">
+                                        <dt>Institution: </dt>
+                                        <dd><?= $academic_degree->institution ?></dd>
+                                        <dt>Start Date: </dt>
+                                        <dd><?= $academic_degree->start_date ?></dd>
+                                        <dt>End Date:</dd>
+                                        <dd><?= $academic_degree->end_date ?></dd>
+                                    </dl>
+                                    <?= $academic_degree->descr ?>
+                                </div>
+                            </div>
+                        </li>
+                    <?php } ?>
+                    <!-- END timeline item -->
+                    <li>
+                    <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+
+                </ul>
+
             </div>
         </div>
 
@@ -59,19 +101,6 @@
               <i class="fa fa-book"></i>
 
               <h3 class="box-title">Classrooms</h3>
-            </div>
-            <hr>
-            <!-- /.box-header -->
-            <div class="box-body">
-            </div>
-        </div>
-
-        <!-- ACADEMIC BOX -->
-        <div class="box box-default" id="introDiv" style="display:none">
-            <div class="box-header with-border">
-              <i class="fa fa-graduation-cap"></i>
-
-              <h3 class="box-title">Academic Degrees</h3>
             </div>
             <hr>
             <!-- /.box-header -->
@@ -134,7 +163,6 @@
     </div>
 
 <?php dump($user); ?>
-
 
 <style>
 
