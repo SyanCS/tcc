@@ -32,11 +32,11 @@
                                                                                                                                             
                                                                                                         <dt><?= __('Start Date') ?></dt>
                                 <dd>
-                                    <?= h($profitionalPosition->start_date) ?>
+                                    <?= h($profitionalPosition->start_date->format('d/m/Y')) ?>
                                 </dd>
                                                                                                                     <dt><?= __('End Date') ?></dt>
                                 <dd>
-                                    <?= h($profitionalPosition->end_date) ?>
+                                    <?= h($profitionalPosition->end_date->format('d/m/Y')) ?>
                                 </dd>
               
                                                                                                     

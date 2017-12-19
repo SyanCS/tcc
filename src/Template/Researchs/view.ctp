@@ -34,11 +34,11 @@
                                                                                                                                             
                                                                                                         <dt><?= __('Start Date') ?></dt>
                                 <dd>
-                                    <?= h($research->start_date) ?>
+                                    <?= h($research->start_date->format('d/m/Y')) ?>
                                 </dd>
                                                                                                                     <dt><?= __('End Date') ?></dt>
                                 <dd>
-                                    <?= h($research->end_date) ?>
+                                    <?= h($research->end_date->format('d/m/Y')) ?>
                                 </dd>
                                                                                                                     
                                                                                                     

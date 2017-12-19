@@ -35,7 +35,7 @@
                                                                                                                                             
                                                                                                         <dt><?= __('Date') ?></dt>
                                 <dd>
-                                    <?= h($publication->date) ?>
+                                    <?= h($publication->date->format('d/m/Y')) ?>
                                 </dd>
        
                                                                                                     

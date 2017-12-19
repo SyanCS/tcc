@@ -38,11 +38,11 @@
                                                                                                                                             
                                                                                                         <dt><?= __('Start Date:') ?></dt>
                                 <dd>
-                                    <?= h($academicDegree->start_date) ?>
+                                    <?= h($academicDegree->start_date->format('d/m/Y')) ?>
                                 </dd>
                                                                                                                     <dt><?= __('End Date:') ?></dt>
                                 <dd>
-                                    <?= h($academicDegree->end_date) ?>
+                                    <?= h($academicDegree->end_date->format('d/m/Y')) ?>
                                 </dd>
                                                                                                     
                                             

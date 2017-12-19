@@ -20,7 +20,6 @@ class ProfitionalPositionsController extends AppController
         $action = $this->request->param('action');
 
         switch($action) {
-            case 'view' :
             case 'edit' :
                 if(isset($this->viewVars['profitionalPosition']->start_date)){ 
                     $this->viewVars['profitionalPosition']->start_date = date('d/m/Y', strtotime($this->viewVars['profitionalPosition']->start_date));
@@ -29,16 +28,6 @@ class ProfitionalPositionsController extends AppController
                     $this->viewVars['profitionalPosition']->end_date = date('d/m/Y', strtotime($this->viewVars['profitionalPosition']->end_date));
                 }
                 break;
-            case 'index' :
-                foreach($this->viewVars['profitionalPositions'] as $profitionalPosition)
-                    if(isset($profitionalPosition->start_date)){ 
-                        $profitionalPosition->start_date = date('d/m/Y', strtotime($profitionalPosition->start_date));
-                    }
-                    if(isset($profitionalPosition->end_date)){
-                        $profitionalPosition->end_date = date('d/m/Y', strtotime($profitionalPosition->end_date));
-                    }
-                    break;
-
             default:
                 break;
         }

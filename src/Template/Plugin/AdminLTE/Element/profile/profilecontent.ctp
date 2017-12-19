@@ -27,15 +27,26 @@
 
                 <ul class="timeline">
 
-                    <?php foreach($user->academic_degrees as $academic_degree){ ?>
+                    <?php
+                    $last_year = "" ;
+                    foreach($user->academic_degrees as $academic_degree){
 
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-aqua">
-                                <?= $academic_degree->end_date ?>
-                            </span>
-                        </li>
-                        <!-- /.timeline-label -->
+                        $this_year = $academic_degree->end_date->format('Y');
+
+                        if($this_year != $last_year){ ?>
+
+                            <!-- timeline time label -->
+                            <li class="time-label">
+                                <span class="bg-aqua">
+                                    &nbsp &nbsp <?= $academic_degree->end_date->format('Y') ?> &nbsp &nbsp
+                                </span>
+                            </li>
+                            <!-- /.timeline-label -->
+                        <?php }
+
+                        $last_year = $academic_degree->end_date->format('Y');
+
+                        ?>
 
                         <!-- timeline item -->
                         <li>
@@ -50,9 +61,9 @@
                                         <dt>Institution: </dt>
                                         <dd><?= $academic_degree->institution ?></dd>
                                         <dt>Start Date: </dt>
-                                        <dd><?= $academic_degree->start_date ?></dd>
+                                        <dd><?= $academic_degree->start_date->format('d/m/Y') ?></dd>
                                         <dt>End Date:</dd>
-                                        <dd><?= $academic_degree->end_date ?></dd>
+                                        <dd><?= $academic_degree->end_date->format('d/m/Y') ?></dd>
                                     </dl>
                                     <?= $academic_degree->descr ?>
                                 </div>

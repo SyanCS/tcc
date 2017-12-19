@@ -20,7 +20,6 @@ class AcademicDegreesController extends AppController
         $action = $this->request->param('action');
 
         switch($action) {
-            case 'view' :
             case 'edit' :
                 if(isset($this->viewVars['academicDegree']->start_date)){ 
                     $this->viewVars['academicDegree']->start_date = date('d/m/Y', strtotime($this->viewVars['academicDegree']->start_date));
@@ -29,16 +28,6 @@ class AcademicDegreesController extends AppController
                     $this->viewVars['academicDegree']->end_date = date('d/m/Y', strtotime($this->viewVars['academicDegree']->end_date));
                 }
                 break;
-            case 'index' :
-                foreach($this->viewVars['academicDegrees'] as $academicDegree)
-                    if(isset($academicDegree->start_date)){ 
-                        $academicDegree->start_date = date('d/m/Y', strtotime($academicDegree->start_date));
-                    }
-                    if(isset($academicDegree->end_date)){
-                        $academicDegree->end_date = date('d/m/Y', strtotime($academicDegree->end_date));
-                    }
-                    break;
-
             default:
                 break;
         }

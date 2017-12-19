@@ -42,7 +42,7 @@
               <tr>
                 <td><?= $this->Number->format($publication->id) ?></td>
                 <td><?= h($publication->title) ?></td>
-                <td><?= h($publication->date) ?></td>
+                <td><?= h($publication->date->format('d/m/Y')) ?></td>
                 <!--td><?= $publication->has('user') ? $this->Html->link($publication->user->name, ['controller' => 'Users', 'action' => 'view', $publication->user->id]) : '' ?></td-->
                 <td><?= h($publication->publication_link) ?></td>
                 <td class="actions" style="white-space:nowrap">

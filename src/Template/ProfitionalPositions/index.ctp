@@ -43,8 +43,8 @@
                 <td><?= $this->Number->format($profitionalPosition->id) ?></td>
                 <td><?= h($profitionalPosition->position_title) ?></td>
                 <td><?= h($profitionalPosition->institution) ?></td>
-                <td><?= h($profitionalPosition->start_date) ?></td>
-                <td><?= h($profitionalPosition->end_date) ?></td>
+                <td><?= h($profitionalPosition->start_date->format('d/m/Y')) ?></td>
+                <td><?= h($profitionalPosition->end_date->format('d/m/Y')) ?></td>
                 <!--td><?= $profitionalPosition->has('user') ? $this->Html->link($profitionalPosition->user->name, ['controller' => 'Users', 'action' => 'view', $profitionalPosition->user->id]) : '' ?></td-->
                 <td class="actions" style="white-space:nowrap">
                   <?= $this->Html->link(__('View'), ['action' => 'view', $profitionalPosition->id], ['class'=>'btn btn-info btn-xs']) ?>

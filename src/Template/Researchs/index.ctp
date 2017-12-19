@@ -44,8 +44,8 @@
                 <td><?= $this->Number->format($research->id) ?></td>
                 <td><?= h($research->institution) ?></td>
                 <td><?= h($research->title) ?></td>
-                <td><?= h($research->start_date) ?></td>
-                <td><?= h($research->end_date) ?></td>
+                <td><?= h($research->start_date->format('d/m/Y')) ?></td>
+                <td><?= h($research->end_date->format('d/m/Y')) ?></td>
                 <!--td><?= $research->has('user') ? $this->Html->link($research->user->name, ['controller' => 'Users', 'action' => 'view', $research->user->id]) : '' ?></td-->
                 <td class="actions" style="white-space:nowrap">
                   <?= $this->Html->link(__('View'), ['action' => 'view', $research->id], ['class'=>'btn btn-info btn-xs']) ?>

@@ -45,8 +45,8 @@
                 <td><?= h($academicDegree->degree) ?></td>
                 <td><?= h($academicDegree->institution) ?></td>
                 <td><?= h($academicDegree->title) ?></td>
-                <td><?= h($academicDegree->start_date) ?></td>
-                <td><?= h($academicDegree->end_date) ?></td>
+                <td><?= h($academicDegree->start_date->format('d/m/Y')) ?></td>
+                <td><?= h($academicDegree->end_date->format('d/m/Y')) ?></td>
                 <td class="actions" style="white-space:nowrap">
                   <?= $this->Html->link(__('View'), ['action' => 'view', $academicDegree->id], ['class'=>'btn btn-info btn-xs']) ?>
                   <?= $this->Html->link(__('Edit'), ['action' => 'edit', $academicDegree->id], ['class'=>'btn btn-warning btn-xs']) ?>

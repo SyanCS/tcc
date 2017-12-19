@@ -20,19 +20,11 @@ class PublicationsController extends AppController
         $action = $this->request->param('action');
 
         switch($action) {
-            case 'view' :
             case 'edit' :
                 if(isset($this->viewVars['publication']->date)){ 
                     $this->viewVars['publication']->date = date('d/m/Y', strtotime($this->viewVars['publication']->date));
                 }
                 break;
-            case 'index' :
-                foreach($this->viewVars['publications'] as $publication)
-                    if(isset($publication->date)){ 
-                        $publication->date = date('d/m/Y', strtotime($publication->date));
-                    }
-                    break;
-
             default:
                 break;
         }

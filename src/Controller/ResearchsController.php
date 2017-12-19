@@ -21,7 +21,6 @@ class ResearchsController extends AppController
         $action = $this->request->param('action');
 
         switch($action) {
-            case 'view' :
             case 'edit' :
                 if(isset($this->viewVars['research']->start_date)){ 
                     $this->viewVars['research']->start_date = date('d/m/Y', strtotime($this->viewVars['research']->start_date));
@@ -30,16 +29,6 @@ class ResearchsController extends AppController
                     $this->viewVars['research']->end_date = date('d/m/Y', strtotime($this->viewVars['research']->end_date));
                 }
                 break;
-            case 'index' :
-                foreach($this->viewVars['researchs'] as $research)
-                    if(isset($research->start_date)){ 
-                        $research->start_date = date('d/m/Y', strtotime($research->start_date));
-                    }
-                    if(isset($research->end_date)){
-                        $research->end_date = date('d/m/Y', strtotime($research->end_date));
-                    }
-                    break;
-
             default:
                 break;
         }
