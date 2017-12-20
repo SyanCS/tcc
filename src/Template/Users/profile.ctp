@@ -31,7 +31,6 @@
 <body class="hold-transition skin-<?php echo Configure::read('Theme.skin'); ?> sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
-        
             <!-- Left side column. contains the sidebar -->
             <?php echo $this->element('AdminLTE.profile/aside-main-sidebar'); ?>
 

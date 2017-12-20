@@ -11,6 +11,26 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <?= $user->main_infos[0]->intro; ?>
+                <br><br>
+                <p><h3>Contact: </h3></p>
+                <dl >
+
+                <?php if(!empty($user->main_infos[0]->email)){ ?>
+                    <dt>Email: </dt>
+                    <dd><?= $user->main_infos[0]->email ?></dd>
+                    <br>
+                <?php } ?>
+                <?php if(!empty($user->main_infos[0]->tel)){ ?>
+                    <dt>Telephone: </dt>
+                    <dd><?= $user->main_infos[0]->tel ?></dd>
+                    <br>
+                <?php } ?>
+                <?php if(!empty($user->main_infos[0]->tel2)){ ?>
+                    <dt>Telephone 2: </dt>
+                    <dd><?= $user->main_infos[0]->tel2 ?></dd>
+                    <br>
+                <?php } ?>
+            </dl>
             </div>
         </div>
 

@@ -89,8 +89,7 @@ class UsersController extends AppController
             $id = $loggedUser['id'];
         }
 
-
-        $user = $this->Users->get($id, [
+        if($user = $this->Users->get($id, [
             'contain' => [
                 'AcademicDegrees' => [
                     'sort' => ['AcademicDegrees.end_date' => 'ASC'],
@@ -118,10 +117,14 @@ class UsersController extends AppController
                 'MainInfos',   
                 'Resumes'
             ]
-        ]);
+        ]) ){
+            $this->set('user', $user);
+            $this->set('_serialize', ['user']);
+        } else{
+            $this->Flash->error(__('User not Found.'));
+        }
 
-        $this->set('user', $user);
-        $this->set('_serialize', ['user']);
+        
     }
 
 
