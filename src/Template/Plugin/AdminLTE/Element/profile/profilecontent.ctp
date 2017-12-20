@@ -54,7 +54,7 @@
                             <i class="fa fa-graduation-cap"></i>
                             <div class="timeline-item">
 
-                                <h3 class="timeline-header"><span><strong><?= $academic_degree->degree ?></strong> - <?= $academic_degree->title ?></h3>
+                                <h3 class="timeline-header"><span><strong><?= $academic_degree->degree ?></strong> - <?= $academic_degree->title ?></span></h3>
                                 
                                 <div class="timeline-body">
                                     <dl class="dl-horizontal">
@@ -120,14 +120,16 @@
                             <i class="fa fa-magic"></i>
                             <div class="timeline-item">
 
-                                <h3 class="timeline-header"><span><strong><?= $advisor->student ?></strong></h3>
+                                <h3 class="timeline-header"><span><strong><?= $advisor->student ?></strong></span></h3>
                                 
                                 <div class="timeline-body">
                                     <dl class="dl-horizontal">
                                         <dt>Institution: </dt>
                                         <dd><?= $advisor->institution ?></dd>
-                                        <dt>Co-Advisor: </dt>
-                                        <dd><?= $advisor->coadvisor?></dd>
+                                        <?php if(!empty($advisor->coadvisor)){ ?>
+                                            <dt>Co-Advisor: </dt>
+                                            <dd><?= $advisor->coadvisor?></dd>
+                                        <?php } ?>
                                     </dl>
                                 </div>
                             </div>
@@ -181,7 +183,7 @@
                             <i class="fa fa-trophy"></i>
                             <div class="timeline-item">
 
-                                <h3 class="timeline-header"><span><strong><?= $award->title ?></strong></h3>
+                                <h3 class="timeline-header"><span><strong><?= $award->title ?></strong></span></h3>
                                 
                                 <div class="timeline-body">
                                     <dl class="dl-horizontal">
@@ -244,7 +246,7 @@
                             <i class="fa fa-book"></i>
                             <div class="timeline-item">
 
-                                <h3 class="timeline-header"><span><strong><?= $classroom->theme ?></strong></h3>
+                                <h3 class="timeline-header"><span><strong><?= $classroom->theme ?></strong></span></h3>
                                 
                                 <div class="timeline-body">
                                     <dl class="dl-horizontal">
@@ -276,6 +278,58 @@
             <hr>
             <!-- /.box-header -->
             <div class="box-body">
+                <ul class="timeline">
+
+                    <?php
+                    $last_year = "" ;
+                    foreach($user->profitional_positions as $profitional_position){
+
+                        $this_year = $profitional_position->end_date->format('Y');
+
+                        if($this_year != $last_year){ ?>
+
+                            <!-- timeline time label -->
+                            <li class="time-label">
+                                <span class="bg-aqua">
+                                    &nbsp &nbsp <?= $this_year ?> &nbsp &nbsp
+                                </span>
+                            </li>
+                            <!-- /.timeline-label -->
+                        <?php }
+
+                        $last_year = $this_year;
+
+                        ?>
+
+                        <!-- timeline item -->
+                        <li>
+                            <!-- timeline icon -->
+                            <i class="fa fa-university"></i>
+                            <div class="timeline-item">
+
+                                <h3 class="timeline-header"><span><strong><?= $profitional_position->position_title ?></strong></span></h3>
+                                
+                                <div class="timeline-body">
+                                    <dl class="dl-horizontal">
+                                        <dt>Institution: </dt>
+                                        <dd><?= $profitional_position->institution ?></dd>
+                                        <dt>Start Date: </dt>
+                                        <dd><?= $profitional_position->start_date->format('d/m/Y') ?></dd>
+                                        <dt>End Date:</dd>
+                                        <dd><?= $profitional_position->end_date->format('d/m/Y') ?></dd>
+                                    </dl>
+                                    <br><br>
+                                    <?= $profitional_position->descr ?>
+                                </div>
+                            </div>
+                        </li>
+                    <?php } ?>
+                    <!-- END timeline item -->
+                    <li>
+                    <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+
+                </ul>
             </div>
         </div>
 
@@ -289,6 +343,66 @@
             <hr>
             <!-- /.box-header -->
             <div class="box-body">
+                <ul class="timeline">
+
+                    <?php
+                    $last_year = "" ;
+                    foreach($user->publications as $publication){
+
+                        $this_year = $publication->date->format('Y');
+
+                        if($this_year != $last_year){ ?>
+
+                            <!-- timeline time label -->
+                            <li class="time-label">
+                                <span class="bg-aqua">
+                                    &nbsp &nbsp <?= $this_year ?> &nbsp &nbsp
+                                </span>
+                            </li>
+                            <!-- /.timeline-label -->
+                        <?php }
+
+                        $last_year = $this_year;
+
+                        ?>
+
+                        <!-- timeline item -->
+                        <li>
+                            <!-- timeline icon -->
+                            <i class="fa fa-newspaper-o"></i>
+                            <div class="timeline-item">
+
+                                <h3 class="timeline-header"><span><strong><?= $publication->title ?></strong></span></h3>
+                                
+                                <div class="timeline-body">
+                                    <dl class="dl-horizontal">
+                                        <dt>Link: </dt>
+                                        <dd><!--a href="<?= $publication->publication_link ?>"--><?= $publication->publication_link ?></a></dd>
+                                        <dt>Date: </dt>
+                                        <dd><?= $publication->date->format('d/m/Y') ?></dd>
+                                        <?php if(!empty($publication->publication_participants)){
+                                            $participants = "";
+                                            foreach($publication->publication_participants as $participant){
+                                                    $participants .= $participant->name.", ";
+                                            } ?>
+                                            <dt>Participants: </dt>
+                                                <dd>
+                                                <?= substr($participants,0,-2);?>
+                                                </dd>
+                                        <?php } ?>
+                                    </dl>
+                                    <br><br>
+                                    <?= $publication->intro ?>
+                                </div>
+                            </div>
+                        </li>
+                    <?php } ?>
+                    <!-- END timeline item -->
+                    <li>
+                    <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+
+                </ul>
             </div>
         </div>
 
@@ -302,25 +416,73 @@
             <hr>
             <!-- /.box-header -->
             <div class="box-body">
+                <ul class="timeline">
+
+                    <?php
+                    $last_year = "" ;
+                    foreach($user->researchs as $research){
+
+                        $this_year = $research->end_date->format('Y');
+
+                        if($this_year != $last_year){ ?>
+
+                            <!-- timeline time label -->
+                            <li class="time-label">
+                                <span class="bg-aqua">
+                                    &nbsp &nbsp <?= $this_year ?> &nbsp &nbsp
+                                </span>
+                            </li>
+                            <!-- /.timeline-label -->
+                        <?php }
+
+                        $last_year = $this_year;
+
+                        ?>
+
+                        <!-- timeline item -->
+                        <li>
+                            <!-- timeline icon -->
+                            <i class="fa fa-newspaper-o"></i>
+                            <div class="timeline-item">
+
+                                <h3 class="timeline-header"><span><strong><?= $research->title ?></strong></span></h3>
+                                
+                                <div class="timeline-body">
+                                    <dl class="dl-horizontal">
+                                        <dt>Institution: </dt>
+                                        <dd><?= $research->institution ?></a></dd>
+                                        <dt>Start Date: </dt>
+                                        <dd><?= $research->start_date->format('d/m/Y') ?></dd>
+                                        <dt>End Date: </dt>
+                                        <dd><?= $research->end_date->format('d/m/Y') ?></dd>
+                                        <?php if(!empty($research->research_members)){
+                                            $members = "";
+                                            foreach($research->research_members as $member){
+                                                    $members .= $member->name.", ";
+                                            } ?>
+                                            <dt>Members: </dt>
+                                                <dd>
+                                                <?= substr($members,0,-2);?>
+                                                </dd>
+                                        <?php } ?>
+                                    </dl>
+                                    <br><br>
+                                    <?= $research->descr ?>
+                                </div>
+                            </div>
+                        </li>
+                    <?php } ?>
+                    <!-- END timeline item -->
+                    <li>
+                    <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+
+                </ul>
             </div>
         </div>
-
-        <!-- RESUMES BOX -->
-        <div class="box box-default" id="resumeDiv" style="display:none">
-            <div class="box-header with-border">
-              <i class="fa fa-file-text"></i>
-
-              <h3 class="box-title">Resume</h3>
-            </div>
-            <hr>
-            <!-- /.box-header -->
-            <div class="box-body">
-            </div>
-        </div>
-
     </div>
 
-<?php dump($user); ?>
+<?php //dump($user); ?>
 
 <style>
 

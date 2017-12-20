@@ -108,10 +108,12 @@ class UsersController extends AppController
                     'sort' => ['ProfitionalPositions.end_date' => 'ASC']
                 ],  
                 'Publications' => [
-                    'sort' => ['Publications.year' => 'ASC']
+                    'sort' => ['Publications.date' => 'ASC'],
+                    'PublicationParticipants'
                 ],  
                 'Researchs' => [
-                    'sort' => ['Researchs.end_date' => 'ASC']
+                    'sort' => ['Researchs.end_date' => 'ASC'],
+                    'ResearchMembers'
                 ],
                 'MainInfos',   
                 'Resumes'

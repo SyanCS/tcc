@@ -82,8 +82,8 @@
     <?php } ?>
     <?php if(!empty($user->resumes)) { ?>
         <li class="treeview">
-            <a href="#" id="resume" class="profileSection">
-                <i class="fa fa-file-text"></i> <span>Resumes</span>
+            <a href="#" id="resume">
+                <i class="fa fa-file-text"></i> <span>Resume</span>
                 <span class="pull-right-container">
                     <i class="fa fa-eye pull-right"></i>
                 </span>
