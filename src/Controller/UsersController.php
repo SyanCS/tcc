@@ -89,39 +89,43 @@ class UsersController extends AppController
             $id = $loggedUser['id'];
         }
 
-        if($user = $this->Users->get($id, [
-            'contain' => [
-                'AcademicDegrees' => [
-                    'sort' => ['AcademicDegrees.end_date' => 'ASC'],
-                ], 
-                'Advisors' => [
-                    'sort' => ['Advisors.year' => 'ASC']
-                ],  
-                'Awards' => [
-                    'sort' => ['Awards.winning_year' => 'ASC']
-                ],  
-                'Classrooms' => [
-                    'sort' => ['Classrooms.year' => 'ASC', 'Classrooms.semester' => 'ASC' ]
-                ],  
-                'ProfitionalPositions' => [
-                    'sort' => ['ProfitionalPositions.end_date' => 'ASC']
-                ],  
-                'Publications' => [
-                    'sort' => ['Publications.date' => 'ASC'],
-                    'PublicationParticipants'
-                ],  
-                'Researchs' => [
-                    'sort' => ['Researchs.end_date' => 'ASC'],
-                    'ResearchMembers'
-                ],
-                'MainInfos',   
-                'Resumes'
-            ]
-        ]) ){
+        if($this->Users->findById($id)->first()){
+
+            $user = $this->Users->get($id, [
+                'contain' => [
+                    'AcademicDegrees' => [
+                        'sort' => ['AcademicDegrees.end_date' => 'ASC'],
+                    ], 
+                    'Advisors' => [
+                        'sort' => ['Advisors.year' => 'ASC']
+                    ],  
+                    'Awards' => [
+                        'sort' => ['Awards.winning_year' => 'ASC']
+                    ],  
+                    'Classrooms' => [
+                        'sort' => ['Classrooms.year' => 'ASC', 'Classrooms.semester' => 'ASC' ]
+                    ],  
+                    'ProfitionalPositions' => [
+                        'sort' => ['ProfitionalPositions.end_date' => 'ASC']
+                    ],  
+                    'Publications' => [
+                        'sort' => ['Publications.date' => 'ASC'],
+                        'PublicationParticipants'
+                    ],  
+                    'Researchs' => [
+                        'sort' => ['Researchs.end_date' => 'ASC'],
+                        'ResearchMembers'
+                    ],
+                    'MainInfos',   
+                    'Resumes'
+                ]
+            ]);
             $this->set('user', $user);
             $this->set('_serialize', ['user']);
+
         } else{
             $this->Flash->error(__('User not Found.'));
+            $this->redirect(['controller' => 'Pages','action' => 'notfound']);
         }
 
         

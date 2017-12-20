@@ -10,11 +10,16 @@
             <hr>
             <!-- /.box-header -->
             <div class="box-body">
-                <?= $user->main_infos[0]->intro; ?>
-                <br><br>
-                <p><h3>Contact: </h3></p>
-                <dl >
 
+                <?php
+                    if(!empty($user->main_infos[0]->intro)){
+                        echo $user->main_infos[0]->intro;
+                    } else {
+                        echo "--";
+                    }
+                ?>
+                <br><br>
+                <dl>
                 <?php if(!empty($user->main_infos[0]->email)){ ?>
                     <dt>Email: </dt>
                     <dd><?= $user->main_infos[0]->email ?></dd>
