@@ -56,16 +56,20 @@
 
                                 <h3 class="timeline-header"><span><strong><?= $academic_degree->degree ?></strong> - <?= $academic_degree->title ?></span></h3>
                                 
-                                <div class="timeline-body">
-                                    <dl class="dl-horizontal">
+                                <div class="timeline-body panel box">
+                                    <dl >
                                         <dt>Institution: </dt>
                                         <dd><?= $academic_degree->institution ?></dd>
+                                        <br>
                                         <dt>Start Date: </dt>
                                         <dd><?= $academic_degree->start_date->format('d/m/Y') ?></dd>
+                                        <br>
                                         <dt>End Date:</dd>
+                                        <br>
                                         <dd><?= $academic_degree->end_date->format('d/m/Y') ?></dd>
+                                        <br>
                                     </dl>
-                                    <br><br>
+                                    
                                     <?= $academic_degree->descr ?>
                                 </div>
                             </div>
@@ -122,13 +126,15 @@
 
                                 <h3 class="timeline-header"><span><strong><?= $advisor->student ?></strong></span></h3>
                                 
-                                <div class="timeline-body">
-                                    <dl class="dl-horizontal">
+                                <div class="timeline-body panel box">
+                                    <dl >
                                         <dt>Institution: </dt>
                                         <dd><?= $advisor->institution ?></dd>
+                                        <br>
                                         <?php if(!empty($advisor->coadvisor)){ ?>
                                             <dt>Co-Advisor: </dt>
                                             <dd><?= $advisor->coadvisor?></dd>
+                                        <br>
                                         <?php } ?>
                                     </dl>
                                 </div>
@@ -185,11 +191,12 @@
 
                                 <h3 class="timeline-header"><span><strong><?= $award->title ?></strong></span></h3>
                                 
-                                <div class="timeline-body">
-                                    <dl class="dl-horizontal">
+                                <div class="timeline-body panel box">
+                                    <dl >
                                         <dt>Institution: </dt>
                                         <dd><?= $award->institution ?></dd>
-                                        <br><br>
+                                        <br>
+                                        
                                         <?= $award->descr?>
                                     </dl>
                                 </div>
@@ -248,12 +255,14 @@
 
                                 <h3 class="timeline-header"><span><strong><?= $classroom->theme ?></strong></span></h3>
                                 
-                                <div class="timeline-body">
-                                    <dl class="dl-horizontal">
+                                <div class="timeline-body panel box">
+                                    <dl >
                                         <dt>Institution: </dt>
                                         <dd><?= $classroom->institution ?></dd>
+                                        <br>
                                         <dt>Degree: </dt>
                                         <dd><?= $classroom->degree?></dd>
+                                        <br>
                                     </dl>
                                 </div>
                             </div>
@@ -309,16 +318,20 @@
 
                                 <h3 class="timeline-header"><span><strong><?= $profitional_position->position_title ?></strong></span></h3>
                                 
-                                <div class="timeline-body">
-                                    <dl class="dl-horizontal">
+                                <div class="timeline-body panel box">
+                                    <dl >
                                         <dt>Institution: </dt>
                                         <dd><?= $profitional_position->institution ?></dd>
+                                        <br>
                                         <dt>Start Date: </dt>
                                         <dd><?= $profitional_position->start_date->format('d/m/Y') ?></dd>
+                                        <br>
                                         <dt>End Date:</dd>
+                                        <br>
                                         <dd><?= $profitional_position->end_date->format('d/m/Y') ?></dd>
+                                        <br>
                                     </dl>
-                                    <br><br>
+                                    
                                     <?= $profitional_position->descr ?>
                                 </div>
                             </div>
@@ -374,12 +387,14 @@
 
                                 <h3 class="timeline-header"><span><strong><?= $publication->title ?></strong></span></h3>
                                 
-                                <div class="timeline-body">
-                                    <dl class="dl-horizontal">
+                                <div class="timeline-body panel box">
+                                    <dl >
                                         <dt>Link: </dt>
                                         <dd><!--a href="<?= $publication->publication_link ?>"--><?= $publication->publication_link ?></a></dd>
+                                        <br>
                                         <dt>Date: </dt>
                                         <dd><?= $publication->date->format('d/m/Y') ?></dd>
+                                        <br>
                                         <?php if(!empty($publication->publication_participants)){
                                             $participants = "";
                                             foreach($publication->publication_participants as $participant){
@@ -389,9 +404,10 @@
                                                 <dd>
                                                 <?= substr($participants,0,-2);?>
                                                 </dd>
+                                        <br>
                                         <?php } ?>
                                     </dl>
-                                    <br><br>
+                                    
                                     <?= $publication->intro ?>
                                 </div>
                             </div>
@@ -447,14 +463,17 @@
 
                                 <h3 class="timeline-header"><span><strong><?= $research->title ?></strong></span></h3>
                                 
-                                <div class="timeline-body">
-                                    <dl class="dl-horizontal">
+                                <div class="timeline-body panel box">
+                                    <dl >
                                         <dt>Institution: </dt>
                                         <dd><?= $research->institution ?></a></dd>
+                                        <br>
                                         <dt>Start Date: </dt>
                                         <dd><?= $research->start_date->format('d/m/Y') ?></dd>
+                                        <br>
                                         <dt>End Date: </dt>
                                         <dd><?= $research->end_date->format('d/m/Y') ?></dd>
+                                        <br>
                                         <?php if(!empty($research->research_members)){
                                             $members = "";
                                             foreach($research->research_members as $member){
@@ -464,9 +483,10 @@
                                                 <dd>
                                                 <?= substr($members,0,-2);?>
                                                 </dd>
+                                        <br>
                                         <?php } ?>
                                     </dl>
-                                    <br><br>
+                                    
                                     <?= $research->descr ?>
                                 </div>
                             </div>
@@ -487,7 +507,7 @@
 <style>
 
 .box-default {
-    margin-top:1%;
+    margin-top:7%;
 }    
 
 </style>

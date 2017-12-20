@@ -1,7 +1,7 @@
 <?php
 use Cake\Core\Configure;
 
-$profile_pic = $this->cell('ProfilePic');
+$profile_pic = $this->cell('ProfileViewPic');
 $profileTitle = $this->cell('ProfileTitle');
 
 

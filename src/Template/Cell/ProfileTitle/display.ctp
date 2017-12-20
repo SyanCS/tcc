@@ -1,3 +1,3 @@
-<div class="pull-left info">
-        <p><?=$profileName?></p>
-    </div>
+<div style="text-align: center;">
+	<h4 style="color:white;"><?=$profileName?></h4>
+</div>
