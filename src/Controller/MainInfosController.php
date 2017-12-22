@@ -104,7 +104,9 @@ class MainInfosController extends AppController
                     $this->Flash->error(__('The {0} could not be saved. Photo must be an Image, try again.', 'Main Info'));  
                 }   
             } else{
-                $this->request->data['photo'] = $mainInfo->photo;
+                if(isset($mainInfo)){
+                    $this->request->data['photo'] = $mainInfo->photo;
+                }
             }
 
             if(!$mainInfo){
