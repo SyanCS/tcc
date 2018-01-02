@@ -81,12 +81,14 @@ class UsersController extends AppController
     }
 
 
+
     public function profile($name = null)
     {
 
         if($name == null){
             $loggedUser = $this->Auth->user();
             $name = $loggedUser['name'];
+            $this->redirect(['controller' => 'Users','action' => 'profile',$name]);
         }
 
         if($user = $this->Users->findByName($name)->first()){

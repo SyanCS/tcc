@@ -12,8 +12,7 @@
         "cakephp/plugin-installer": "~1.0",
         "josegonzalez/dotenv": "2.*",
         "maiconpinto/cakephp-adminlte-theme": "^1.0",
-        "cakecoded/ckeditor": "^1.0",
-		"akkaweb/cakephp-facebook": "dev-master"
+        "cakecoded/ckeditor": "^1.0"
     },
     "require-dev": {
         "psy/psysh": "@stable",
