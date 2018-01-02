@@ -81,15 +81,17 @@ class UsersController extends AppController
     }
 
 
-    public function profile($id = null)
+    public function profile($name = null)
     {
 
-        if($id == null){
+        if($name == null){
             $loggedUser = $this->Auth->user();
-            $id = $loggedUser['id'];
+            $name = $loggedUser['name'];
         }
 
-        if($this->Users->findById($id)->first()){
+        if($user = $this->Users->findByName($name)->first()){
+
+            $id = $user->id;
 
             $user = $this->Users->get($id, [
                 'contain' => [
