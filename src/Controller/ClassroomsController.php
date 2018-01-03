@@ -40,9 +40,18 @@ class ClassroomsController extends AppController
      */
     public function view($id = null)
     {
+
+        $loggedUser = $this->Auth->user();
+        $user_id = $loggedUser['id'];
+
         $classroom = $this->Classrooms->get($id, [
             'contain' => ['Users']
         ]);
+
+        if($classroom->user_id != $user_id){
+            $this->Flash->error(__('You cannot view this {0}.', 'Classroom'));
+            return $this->redirect(['action' => 'index']);
+        }
 
         $this->set('classroom', $classroom);
         $this->set('_serialize', ['classroom']);
@@ -91,6 +100,12 @@ class ClassroomsController extends AppController
         $classroom = $this->Classrooms->get($id, [
             'contain' => []
         ]);
+
+        if($classroom->user_id != $user_id){
+            $this->Flash->error(__('You cannot edit this {0}.', 'Classroom'));
+            return $this->redirect(['action' => 'index']);
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $this->request->data['user_id'] = "{$user_id}";
             $classroom = $this->Classrooms->patchEntity($classroom, $this->request->data);

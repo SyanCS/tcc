@@ -62,9 +62,18 @@ class AcademicDegreesController extends AppController
      */
     public function view($id = null)
     {
+
+        $loggedUser = $this->Auth->user();
+        $user_id = $loggedUser['id'];
+
         $academicDegree = $this->AcademicDegrees->get($id, [
             'contain' => ['Users']
         ]);
+
+        if($academicDegree->user_id != $user_id){
+            $this->Flash->error(__('You cannot view this {0}.', 'Academic Degree'));
+            return $this->redirect(['action' => 'index']);
+        }
 
         $this->set('academicDegree', $academicDegree);
         $this->set('_serialize', ['academicDegree']);
@@ -110,12 +119,19 @@ class AcademicDegreesController extends AppController
      */
     public function edit($id = null)
     {
+
         $loggedUser = $this->Auth->user();
         $user_id = $loggedUser['id'];
 
         $academicDegree = $this->AcademicDegrees->get($id, [
             'contain' => []
         ]);
+
+        if($academicDegree->user_id != $user_id){
+            $this->Flash->error(__('You cannot edit this {0}.', 'Academic Degree'));
+            return $this->redirect(['action' => 'index']);
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $start_date = $this->request->data['start_date'];
             $end_date   = $this->request->data['end_date'];

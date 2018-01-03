@@ -41,9 +41,18 @@ class AwardsController extends AppController
      */
     public function view($id = null)
     {
+
+        $loggedUser = $this->Auth->user();
+        $user_id = $loggedUser['id'];
+
         $award = $this->Awards->get($id, [
             'contain' => ['Users']
         ]);
+
+        if($award->user_id != $user_id){
+            $this->Flash->error(__('You cannot view this {0}.', 'Award'));
+            return $this->redirect(['action' => 'index']);
+        }
 
         $this->set('award', $award);
         $this->set('_serialize', ['award']);
@@ -92,6 +101,12 @@ class AwardsController extends AppController
         $award = $this->Awards->get($id, [
             'contain' => []
         ]);
+
+        if($award->user_id != $user_id){
+            $this->Flash->error(__('You cannot edit this {0}.', 'Award'));
+            return $this->redirect(['action' => 'index']);
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $this->request->data['user_id'] = "{$user_id}";
             $award = $this->Awards->patchEntity($award, $this->request->data);

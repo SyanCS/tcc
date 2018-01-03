@@ -40,9 +40,18 @@ class AdvisorsController extends AppController
      */
     public function view($id = null)
     {
+
+        $loggedUser = $this->Auth->user();
+        $user_id = $loggedUser['id'];
+
         $advisor = $this->Advisors->get($id, [
             'contain' => ['Users']
         ]);
+
+        if($advisor->user_id != $user_id){
+            $this->Flash->error(__('You cannot view this {0}.', 'Advisor'));
+            return $this->redirect(['action' => 'index']);
+        }
 
         $this->set('advisor', $advisor);
         $this->set('_serialize', ['advisor']);
@@ -91,6 +100,12 @@ class AdvisorsController extends AppController
         $advisor = $this->Advisors->get($id, [
             'contain' => []
         ]);
+
+        if($advisor->user_id != $user_id){
+            $this->Flash->error(__('You cannot edit this {0}.', 'Advisor'));
+            return $this->redirect(['action' => 'index']);
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $this->request->data['user_id'] = "{$user_id}";
             $advisor = $this->Advisors->patchEntity($advisor, $this->request->data);

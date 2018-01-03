@@ -38,9 +38,19 @@ class MainInfosController extends AppController
      */
     public function view($id = null)
     {
+
+        $loggedUser = $this->Auth->user();
+        $user_id = $loggedUser['id'];
+
         $mainInfo = $this->MainInfos->get($id, [
             'contain' => ['Users']
         ]);
+
+        if($mainInfo->user_id != $user_id){
+            $this->Flash->error(__('You cannot view this {0}.', 'Main Info'));
+            return $this->redirect(['action' => 'index']);
+        }
+
         $mainInfo = $this->paginate($mainInfo);
         $this->set('mainInfo', $mainInfo);
         $this->set('_serialize', ['mainInfo']);
@@ -85,6 +95,11 @@ class MainInfosController extends AppController
             'contain' => []
         ])
         ->first();
+
+        if($mainInfo->user_id != $user_id){
+            $this->Flash->error(__('You cannot edit this {0}.', 'Main Info'));
+            return $this->redirect(['action' => 'index']);
+        }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             //dump($this->request->data);exit;

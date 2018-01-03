@@ -63,9 +63,18 @@ class ProfitionalPositionsController extends AppController
      */
     public function view($id = null)
     {
+
+        $loggedUser = $this->Auth->user();
+        $user_id = $loggedUser['id'];
+
         $profitionalPosition = $this->ProfitionalPositions->get($id, [
             'contain' => ['Users']
         ]);
+
+        if($profitionalPosition->user_id != $user_id){
+            $this->Flash->error(__('You cannot view this {0}.', 'Profitional Position'));
+            return $this->redirect(['action' => 'index']);
+        }
 
         $this->set('profitionalPosition', $profitionalPosition);
         $this->set('_serialize', ['profitionalPosition']);
@@ -112,6 +121,12 @@ class ProfitionalPositionsController extends AppController
         $profitionalPosition = $this->ProfitionalPositions->get($id, [
             'contain' => []
         ]);
+
+        if($profitionalPosition->user_id != $user_id){
+            $this->Flash->error(__('You cannot edit this {0}.', 'Profitional Position'));
+            return $this->redirect(['action' => 'index']);
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $this->request->data['user_id'] = "{$user_id}";
             $profitionalPosition = $this->ProfitionalPositions->patchEntity($profitionalPosition, $this->request->data);

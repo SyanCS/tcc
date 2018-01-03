@@ -18,7 +18,7 @@
       <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title"><?= __('Form') ?></h3>
+          
         </div>
         <?= $this->Form->create($resume, array('role' => 'form', 'enctype'=>'multipart/form-data')) ?>
           <div class="box-body">

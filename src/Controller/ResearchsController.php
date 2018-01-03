@@ -64,9 +64,18 @@ class ResearchsController extends AppController
      */
     public function view($id = null)
     {
+
+        $loggedUser = $this->Auth->user();
+        $user_id = $loggedUser['id'];
+
         $research = $this->Researchs->get($id, [
             'contain' => ['Users', 'ResearchMembers']
         ]);
+
+        if($research->user_id != $user_id){
+            $this->Flash->error(__('You cannot view this {0}.', 'Research'));
+            return $this->redirect(['action' => 'index']);
+        }
 
         $this->set('research', $research);
         $this->set('_serialize', ['research']);
@@ -133,6 +142,12 @@ class ResearchsController extends AppController
         $research = $this->Researchs->get($id, [
             'contain' => ['ResearchMembers']
         ]);
+
+        if($research->user_id != $user_id){
+            $this->Flash->error(__('You cannot edit this {0}.', 'Research'));
+            return $this->redirect(['action' => 'index']);
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $this->request->data['user_id']  = "{$user_id}";
             $research = $this->Researchs->patchEntity($research, $this->request->data);
