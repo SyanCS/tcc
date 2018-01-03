@@ -39,10 +39,9 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $username   = $this->request['data']['username'];
-            $user       = $this->Users->findByUsername($username);
+            $user       = $this->Users->findByUsername($username)->first();
 
             if ($user) {
-
                 $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
                 $key = '';
@@ -52,14 +51,45 @@ class UsersController extends AppController
                 }
 
                 $email = new Email();
-                $email->from(['syancs@id.uff.br' => 'Admin'])
+                $email->from(['syantccmailer@gmail.com' => 'Admin'])
                     ->to($username)
                     ->subject('Password Change')
-                    ->send('');
-                $this->Flash->success(__('Code sent.'));
-                return $this->redirect(['action' => 'login']);
+                    ->send('Heres your code to change your password: '.$key);
+
+                $user->reset_token = $key;
+                if($this->Users->save($user)){
+                    $this->Flash->success(__('Code sent.'));
+                    return $this->redirect(['action' => 'reset']);
+                }
             }
             $this->Flash->error(__('Invalid Email, try again.'));
+        }
+        $this->set('user', $user);
+    }
+
+    public function reset()
+    {
+        $user = $this->Users->newEntity();
+        if ($this->request->is('post')) {
+            $username   = $this->request['data']['username'];
+            $user       = $this->Users->findByUsername($username)->first();
+
+            if ($user) {
+
+                if($this->request->data['reset_token'] == $user->reset_token){
+                    $user = $this->Users->patchEntity($user, $this->request->data);
+                    if($this->Users->save($user)){
+                        $this->Flash->success(__('Password changed.'));
+                        return $this->redirect(['action' => 'login']);
+                    }
+                }else {
+                    $this->Flash->error(__('Invalid Token, try again.'));
+                    return $this->redirect(['action' => 'reset']);
+                }
+            } else{
+                $this->Flash->error(__('Invalid Email, try again.'));
+                return $this->redirect(['action' => 'reset']);
+            }
         }
         $this->set('user', $user);
     }
@@ -99,7 +129,7 @@ class UsersController extends AppController
                 'contain' => [
                     'AcademicDegrees' => [
                         'sort' => ['AcademicDegrees.end_date' => 'ASC'],
-                    ], 
+                    ],
                     'Advisors' => [
                         'sort' => ['Advisors.year' => 'ASC']
                     ],  

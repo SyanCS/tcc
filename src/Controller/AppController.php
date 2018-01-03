@@ -47,7 +47,7 @@ class AppController extends Controller
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['login','register','forgot','profile']);
+        $this->Auth->allow(['login','register','forgot','profile','reset']);
     }
 
     public function initialize()
@@ -91,6 +91,7 @@ class AppController extends Controller
             case 'login':
                 $this->viewBuilder()->layout('login');
                 break;
+            case 'reset':
             case 'forgot':
             case 'register':
                 $this->viewBuilder()->layout('register');
