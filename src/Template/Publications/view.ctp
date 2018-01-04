@@ -115,10 +115,6 @@
                                     </td>
                                     
                                                                         <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['controller' => 'PublicationParticipants', 'action' => 'view', $publicationParticipants->id], ['class'=>'btn btn-info btn-xs']) ?>
-
-                                    <?= $this->Html->link(__('Edit'), ['controller' => 'PublicationParticipants', 'action' => 'edit', $publicationParticipants->id], ['class'=>'btn btn-warning btn-xs']) ?>
-
                                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'PublicationParticipants', 'action' => 'delete', $publicationParticipants->id], ['confirm' => __('Are you sure you want to delete # {0}?', $publicationParticipants->id), 'class'=>'btn btn-danger btn-xs']) ?>    
                                     </td>
                                 </tr>

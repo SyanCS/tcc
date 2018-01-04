@@ -35,7 +35,7 @@
   </div>
 
   <div class="register-box-body">
-
+    <p> <?php echo $this->Flash->render(); ?> </p>
     <?php echo $this->fetch('content'); ?>
 
     <div class="social-auth-links text-center">

@@ -84,14 +84,29 @@ class UsersController extends AppController
                     }
                 }else {
                     $this->Flash->error(__('Invalid Token, try again.'));
-                    return $this->redirect(['action' => 'reset']);
                 }
             } else{
                 $this->Flash->error(__('Invalid Email, try again.'));
-                return $this->redirect(['action' => 'reset']);
             }
         }
         $this->set('user', $user);
+    }
+
+    public function register(){
+        $user = $this->Users->newEntity();
+        if ($this->request->is('post')) {
+            $this->request->data['users_type_id'] = "2";
+            $user = $this->Users->patchEntity($user, $this->request->data);
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The {0} has been saved.', 'User'));
+                return $this->redirect(['action' => 'login']);
+            } else {
+                $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'User'));
+            }
+        }
+        $usersTypes = $this->Users->UsersTypes->find('list', ['limit' => 200]);
+        $this->set(compact('user', 'usersTypes'));
+        $this->set('_serialize', ['user']);
     }
 
     /**
@@ -101,6 +116,7 @@ class UsersController extends AppController
      */
     public function index()
     {
+        
         $this->paginate = [
             'contain' => ['UsersTypes']
         ];
@@ -173,15 +189,21 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    /*public function view($id = null)
     {
+        $loggedUser = $this->Auth->user();
+        if($loggedUser['users_type_id'] != 1){
+            $this->Flash->error(__('You are not authorized to access this.'));
+            return $this->redirect(['controller' => 'MainInfos','action' => 'edit']);
+        }
+
         $user = $this->Users->get($id, [
             'contain' => ['UsersTypes', 'AcademicDegrees', 'Advisors', 'Awards', 'Classrooms', 'MainInfos', 'ProfitionalPositions', 'Publications', 'Researchs', 'Resumes']
         ]);
 
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
-    }
+    }*/
 
     /**
      * Add method
@@ -190,29 +212,18 @@ class UsersController extends AppController
      */
     public function add()
     {
+        $loggedUser = $this->Auth->user();
+        if($loggedUser['users_type_id'] != 1){
+            $this->Flash->error(__('You are not authorized to access this.'));
+            return $this->redirect(['controller' => 'MainInfos','action' => 'edit']);
+        }
+
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The {0} has been saved.', 'User'));
                 return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'User'));
-            }
-        }
-        $usersTypes = $this->Users->UsersTypes->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'usersTypes'));
-        $this->set('_serialize', ['user']);
-    }
-
-    public function register(){
-        $user = $this->Users->newEntity();
-        if ($this->request->is('post')) {
-            $this->request->data['users_type_id'] = "2";
-            $user = $this->Users->patchEntity($user, $this->request->data);
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The {0} has been saved.', 'User'));
-                return $this->redirect(['action' => 'login']);
             } else {
                 $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'User'));
             }
@@ -231,6 +242,12 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
+        $loggedUser = $this->Auth->user();
+        if($loggedUser['users_type_id'] != 1){
+            $this->Flash->error(__('You are not authorized to access this.'));
+            return $this->redirect(['controller' => 'MainInfos','action' => 'edit']);
+        }
+
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
@@ -257,6 +274,12 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
+        $loggedUser = $this->Auth->user();
+        if($loggedUser['users_type_id'] != 1){
+            $this->Flash->error(__('You are not authorized to access this.'));
+            return $this->redirect(['controller' => 'MainInfos','action' => 'edit']);
+        }
+
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {

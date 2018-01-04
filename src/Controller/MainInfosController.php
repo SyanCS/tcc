@@ -96,7 +96,7 @@ class MainInfosController extends AppController
         ])
         ->first();
 
-        if($mainInfo->user_id != $user_id){
+        if(isset($mainInfo) && ($mainInfo->user_id != $user_id) ){
             $this->Flash->error(__('You cannot edit this {0}.', 'Main Info'));
             return $this->redirect(['action' => 'index']);
         }

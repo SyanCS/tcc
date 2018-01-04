@@ -29,28 +29,18 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('name') ?></th>
                 <th><?= $this->Paginator->sort('username') ?></th>
-                <th><?= $this->Paginator->sort('password') ?></th>
-                <th><?= $this->Paginator->sort('reg_date') ?></th>
-                <th><?= $this->Paginator->sort('users_type_id') ?></th>
                 <th><?= __('Actions') ?></th>
               </tr>
             </thead>
             <tbody>
             <?php foreach ($users as $user): ?>
               <tr>
-                <td><?= $this->Number->format($user->id) ?></td>
                 <td><?= h($user->name) ?></td>
                 <td><?= h($user->username) ?></td>
-                <td><?= h($user->password) ?></td>
-                <td><?= h($user->reg_date) ?></td>
-                <td><?= $user->has('users_type') ? $this->Html->link($user->users_type->id, ['controller' => 'UsersTypes', 'action' => 'view', $user->users_type->id]) : '' ?></td>
                 <td class="actions" style="white-space:nowrap">
-                  <?= $this->Html->link(__('View'), ['action' => 'view', $user->id], ['class'=>'btn btn-info btn-xs']) ?>
-                  <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class'=>'btn btn-warning btn-xs']) ?>
-                  <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
+                  <?= $this->Html->link(__('Profile'), ['action' => 'profile', $user->name], ['class'=>'btn btn-warning btn-xs']) ?>
                 </td>
               </tr>
             <?php endforeach; ?>

@@ -16,17 +16,12 @@ if (file_exists($file)) {
         <?= $user_menu ?>
     </li>
     <li class="treeview">
-        <a href="#">
+        <a href="<?php echo $this->Url->build('/users/profile'); ?>">
             <i class="fa  fa-smile-o"></i> <span>My Profile</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
-        <ul class="treeview-menu">
-            <li><a href="<?php echo $this->Url->build('/users/profile'); ?>"><i class="fa fa-circle-o"></i> View</a></li>
-            <!--li><a href="<?php echo $this->Url->build('/users/generate'); ?>"><i class="fa fa-circle-o"></i> Generate Profile</a></li-->
-            <!--li><a href="<?php echo $this->Url->build('/users/logout'); ?>"><i class="fa fa-circle-o"></i> Sign out</a></li-->
-        </ul>
     </li>
     <li class="header">MY INFOS</li>
     <li class="treeview">

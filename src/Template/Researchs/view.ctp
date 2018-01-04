@@ -118,9 +118,6 @@
                                     </td>
                                     
                                                                         <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['controller' => 'ResearchMembers', 'action' => 'view', $researchMembers->id], ['class'=>'btn btn-info btn-xs']) ?>
-
-                                    <?= $this->Html->link(__('Edit'), ['controller' => 'ResearchMembers', 'action' => 'edit', $researchMembers->id], ['class'=>'btn btn-warning btn-xs']) ?>
 
                                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'ResearchMembers', 'action' => 'delete', $researchMembers->id], ['confirm' => __('Are you sure you want to delete # {0}?', $researchMembers->id), 'class'=>'btn btn-danger btn-xs']) ?>    
                                     </td>
