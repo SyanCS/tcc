@@ -46,12 +46,14 @@ class ResumesController extends AppController
         $this->set('_serialize', ['resume']);
     }
 
-    public function download()
+    public function download($id = null)
     {
-        $loggedUser = $this->Auth->user();
-        $user_id = $loggedUser['id'];
+        if(!isset($id)){
+            $loggedUser = $this->Auth->user();
+            $id = $loggedUser['id'];
+        }
 
-        $resume = $this->Resumes->findByUserId($user_id, [
+        $resume = $this->Resumes->findByUserId($id, [
             'contain' => []
         ])
         ->first();
@@ -59,7 +61,7 @@ class ResumesController extends AppController
         //dump($filePath);exit;
         $extension = explode(".",$resume['url']);
         $extension = end($extension);
-        $filename  = "resume_".$loggedUser['name'].".".$extension;  
+        $filename  = "resume_".str_replace(" ","_",$loggedUser['name']).".".$extension;  
         $this->response->file($filePath ,
         array('download'=> true, 'name'=> $filename));
         return $this->response;

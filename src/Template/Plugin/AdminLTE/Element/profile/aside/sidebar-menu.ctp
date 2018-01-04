@@ -66,9 +66,8 @@
     <?php } ?>
     <?php if(!empty($user->resumes)) { ?>
         <li class="treeview">
-            <a  id="resume">
+            <a  href="<?php echo $this->Url->build('/resumes/download'); ?>">
                 <i class="fa fa-file-text"></i> <span>Resume</span>
-                
             </a>
         </li>
     <?php } ?>

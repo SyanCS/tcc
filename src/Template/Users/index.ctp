@@ -2,7 +2,7 @@
 <section class="content-header">
   <h1>
     Users
-    <div class="pull-right"><?= $this->Html->link(__('New'), ['action' => 'add'], ['class'=>'btn btn-success btn-xs']) ?></div>
+    <!--div class="pull-right"><?= $this->Html->link(__('New'), ['action' => 'add'], ['class'=>'btn btn-success btn-xs']) ?></div-->
   </h1>
 </section>
 
