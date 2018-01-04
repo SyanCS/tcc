@@ -4,9 +4,7 @@
         <li class="treeview">
             <a  id="intro" class="profileSection">
                 <i class="fa fa-info"></i> <span> Intro</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-eye pull-right"></i>
-                </span>
+                
             </a>
         </li>
     <?php } ?>
@@ -14,9 +12,7 @@
         <li class="treeview">
             <a  id="academicDegree" class="profileSection">
                 <i class="fa  fa-graduation-cap"></i> <span>Academic Degrees</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-eye pull-right"></i>
-                </span>
+                
             </a>
         </li>
     <?php } ?>
@@ -24,9 +20,7 @@
         <li class="treeview">
             <a  id="advising" class="profileSection">
                 <i class="fa  fa-magic"></i> <span>Advisings</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-eye pull-right"></i>
-                </span>
+                
             </a>
         </li>
     <?php } ?>
@@ -34,9 +28,7 @@
         <li class="treeview">
             <a  id="award" class="profileSection">
                 <i class="fa  fa-trophy"></i> <span>Awards</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-eye pull-right"></i>
-                </span>
+                
             </a>
         </li>
     <?php } ?>
@@ -44,9 +36,7 @@
         <li class="treeview">
             <a  id="classroom" class="profileSection">
                 <i class="fa fa-book"></i> <span>Classrooms</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-eye pull-right"></i>
-                </span>
+                
             </a>
         </li>
     <?php } ?>
@@ -54,9 +44,7 @@
         <li class="treeview">
             <a  id="profitionalPosition" class="profileSection">
                 <i class="fa fa-university"></i> <span>Profitional Positions</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-eye pull-right"></i>
-                </span>
+                
             </a>
         </li>
     <?php } ?>
@@ -64,9 +52,7 @@
         <li class="treeview" id="publication">
             <a  id="publication" class="profileSection">
                 <i class="fa fa-newspaper-o"></i> <span>Publications</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-eye pull-right"></i>
-                </span>
+                
             </a>
         </li>
     <?php } ?>
@@ -74,9 +60,7 @@
         <li class="treeview">
             <a  id="research" class="profileSection">
                 <i class="fa fa-group"></i> <span>Researchs</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-eye pull-right"></i>
-                </span>
+                
             </a>
         </li>
     <?php } ?>
@@ -84,9 +68,7 @@
         <li class="treeview">
             <a  id="resume">
                 <i class="fa fa-file-text"></i> <span>Resume</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-eye pull-right"></i>
-                </span>
+                
             </a>
         </li>
     <?php } ?>

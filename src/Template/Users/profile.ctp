@@ -31,26 +31,29 @@
 <body class="hold-transition skin-<?php echo Configure::read('Theme.skin'); ?> sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
-            <!-- Left side column. contains the sidebar -->
-            <?php echo $this->element('AdminLTE.profile/aside-main-sidebar'); ?>
+        <header class="main-header">
+            <?php echo $this->element('AdminLTE.profile/nav-top') ?>
+        </header>
+        <!-- Left side column. contains the sidebar -->
+        <?php echo $this->element('AdminLTE.profile/aside-main-sidebar'); ?>
 
-            <!-- =============================================== -->
+        <!-- =============================================== -->
 
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
 
-                <?php echo $this->Flash->render(); ?>
-                <?php echo $this->Flash->render('auth'); ?>
-                <?php echo $this->fetch('content'); ?>
+            <?php echo $this->Flash->render(); ?>
+            <?php echo $this->Flash->render('auth'); ?>
+            <?php echo $this->fetch('content'); ?>
 
-                <?php echo $this->element('AdminLTE.profile/profilecontent'); ?>
+            <?php echo $this->element('AdminLTE.profile/profilecontent'); ?>
 
-            </div>
+        </div>
 
-            <!-- /.content-wrapper -->
-            <?php echo $this->element('AdminLTE.profile/footer'); ?>
+        <!-- /.content-wrapper -->
+        <?php echo $this->element('AdminLTE.profile/footer'); ?>
 
-            <!-- /.control-sidebar -->
+        <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
         immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
