@@ -40,7 +40,7 @@
                 <td><?= h($user->name) ?></td>
                 <td><?= h($user->username) ?></td>
                 <td class="actions" style="white-space:nowrap">
-                  <?= $this->Html->link(__('Profile'), ['action' => 'profile', $user->name], ['class'=>'btn btn-warning btn-xs']) ?>
+                  <?= $this->Html->link(__('Profile'), ['action' => 'profile', $profile = str_replace(" ", "_", $user->name)], ['class'=>'btn btn-warning btn-xs']) ?>
                 </td>
               </tr>
             <?php endforeach; ?>

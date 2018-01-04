@@ -16,7 +16,8 @@ if (file_exists($file)) {
         <?= $user_menu ?>
     </li>
     <li class="treeview">
-        <a href="<?php echo $this->Url->build('/users/profile'); ?>">
+        <?php $profile = str_replace(" ", "_", $_SESSION['Auth']['User']['name']); ?>
+        <a href="<?php echo $this->Url->build("/users/profile/$profile"); ?>">
             <i class="fa  fa-smile-o"></i> <span>My Profile</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>

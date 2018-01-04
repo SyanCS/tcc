@@ -131,6 +131,8 @@ class UsersController extends AppController
     public function profile($name = null)
     {
 
+        $name = str_replace("_", " ", $name);
+
         if($name == null){
             $loggedUser = $this->Auth->user();
             $name = $loggedUser['name'];
