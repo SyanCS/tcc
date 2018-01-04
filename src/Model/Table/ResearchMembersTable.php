@@ -78,4 +78,9 @@ class ResearchMembersTable extends Table
 
         return $rules;
     }
+
+    public function renewByResearch($research_id)
+    {
+        return $this->deleteAll(['research_id' => $research_id]);
+    }
 }

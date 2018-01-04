@@ -98,18 +98,20 @@ class ResearchsController extends AppController
             $saved_research = $this->Researchs->save($research);
             if ($saved_research) {
                 $this->loadModel('ResearchMembers');
-                $membersList = $this->request['data']['members'];
                 $warning = false;
-                foreach($membersList as $member_data){
+                if(isset($this->request['data']['members'])){
+                    $membersList = $this->request['data']['members'];
+                    foreach($membersList as $member_data){
 
-                    $member_data['research_id'] = $saved_research->id;
-                    $member = $this->ResearchMembers->newEntity();
-                    $member = $this->ResearchMembers->patchEntity($member, $member_data);
+                        $member_data['research_id'] = $saved_research->id;
+                        $member = $this->ResearchMembers->newEntity();
+                        $member = $this->ResearchMembers->patchEntity($member, $member_data);
 
-                    if(!$this->ResearchMembers->save($member)){
-                        $warning = true;
+                        if(!$this->ResearchMembers->save($member)){
+                            $warning = true;
+                        }
+
                     }
-
                 }
                 if(!$warning){
                     $this->Flash->success(__('The {0} has been saved.', 'Research'));
@@ -149,27 +151,32 @@ class ResearchsController extends AppController
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
+
             $this->request->data['user_id']  = "{$user_id}";
             $research = $this->Researchs->patchEntity($research, $this->request->data);
+            //dump($research);exit;
             $saved_research = $this->Researchs->save($research);
             if ($saved_research) {
                 $this->loadModel('ResearchMembers');
-                $membersList = $this->request['data']['members'];
                 $warning = false;
-                foreach($membersList as $member_data){
+                $this->ResearchMembers->renewByResearch($saved_research->id);
+                if(isset($this->request['data']['members'])){
+                    $membersList = $this->request['data']['members'];
+                    foreach($membersList as $member_data){
 
-                    $member_data['research_id'] = $saved_research->id;
-                    if(isset($member_data['id'])){
-                        $member = $this->ResearchMembers->get($member_data['id']);
-                    }else{
-                        $member = $this->ResearchMembers->newEntity();
+                        $member_data['research_id'] = $saved_research->id;
+                        //if(isset($member_data['id'])){
+                          //  $member = $this->ResearchMembers->get($member_data['id']);
+                        //}else{
+                            $member = $this->ResearchMembers->newEntity();
+                        //}
+                        $member = $this->ResearchMembers->patchEntity($member, $member_data);
+
+                        if(!$this->ResearchMembers->save($member)){
+                            $warning = true;
+                        }
+
                     }
-                    $member = $this->ResearchMembers->patchEntity($member, $member_data);
-
-                    if(!$this->ResearchMembers->save($member)){
-                        $warning = true;
-                    }
-
                 }
                 if(!$warning){
                     $this->Flash->success(__('The {0} has been saved.', 'Research'));

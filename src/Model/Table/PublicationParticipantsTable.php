@@ -74,4 +74,9 @@ class PublicationParticipantsTable extends Table
 
         return $rules;
     }
+
+    public function renewByPublication($publication_id)
+    {
+        return $this->deleteAll(['publication_id' => $publication_id]);
+    }
 }

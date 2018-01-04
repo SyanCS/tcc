@@ -61,13 +61,13 @@
             <!-- Members -->
             <h4 class="box-title"><?= __('Members') ?></h4>
             <?php 
-              $i = 0;
+              $i = 1;
               foreach($research->research_members as $member){?>
 
-                <div class="row">
-                  <div class="col-xs-3">
+                <div id="<?=$i?>" class="row">
+                  <div id="<?=$i?>input" class="col-xs-3">
                     <?php
-                    echo "<label>Participant ".$i.":</label>";
+                    echo "<label>Member ".$i.":</label>";
                     echo "<input type='text' value='".$member['name']."' class='form-control' name='members[".$i."][name]'>";
                     echo "<input type='hidden' value='".$member['id']."' class='form-control' name='members[".$i."][id]'>";
                     echo "<br>";
@@ -79,10 +79,13 @@
             <?php }?>
             <div class="row" id="membersListButtonDiv">
               <div class="col-xs-2">
-                <button id="addMember" type="button" class="btn btn-block btn-info"><i class="fa fa-plus"></i><strong>&nbsp;&nbsp;&nbsp;Add Member</strong></button> 
+                <button id="addMember" type="button" class="btn btn-block btn-info"><i class="fa fa-plus"></i><strong>&nbsp;&nbsp;&nbsp;Add Member</strong></button>
+              </div>
+              <div class="col-xs-2">
+                <button id="deleteMember" type="button" class="btn btn-block btn-danger"><i class="fa fa-remove"></i><strong>&nbsp;&nbsp;&nbsp;Delete Member</strong></button> 
+              </div>
+              <?php echo "<input type='hidden' id='membersNum' value='".$i."'>"; ?>
             </div>
-            <?php echo "<input type='hidden' id='membersNum' value='".$i."'>"; ?>
-          </div>
           <br>
           <!-- /.box-body -->
           <div class="box-footer">
@@ -143,6 +146,16 @@ $this->Html->script([
       $("#"+memberNum+"input").append("<input type='text' class='form-control' name='members["+memberNum+"][name]'>");
       $('#membersListButtonDiv').before("<br>");
       memberNum++;
+    });
+
+    $("#deleteMember").on( "click", function() {
+      var aux = memberNum - 1; //dane-se
+
+      if(aux > 0){
+        $('#'+aux+'input').remove();
+        $('#'+aux).remove();
+        memberNum--;
+      }
     });
 
   });

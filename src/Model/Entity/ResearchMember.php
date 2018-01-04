@@ -7,7 +7,6 @@ use Cake\ORM\Entity;
  * ResearchMember Entity
  *
  * @property int $id
- * @property string $institution
  * @property string $name
  * @property bool $coordinator
  * @property int $research_id

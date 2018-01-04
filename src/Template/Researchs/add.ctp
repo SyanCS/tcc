@@ -63,8 +63,11 @@
             <div class="row" id="membersListButtonDiv">
               <div class="col-xs-2">
                 <button id="addMember" type="button" class="btn btn-block btn-info"><i class="fa fa-plus"></i><strong>&nbsp;&nbsp;&nbsp;Add Member</strong></button> 
+              </div>
+              <div class="col-xs-2">
+                <button id="deleteMember" type="button" class="btn btn-block btn-danger"><i class="fa fa-remove"></i><strong>&nbsp;&nbsp;&nbsp;Delete Member</strong></button> 
+              </div>
             </div>
-          </div>
           <br>
           <!-- /.box-body -->
           <div class="box-footer">
@@ -125,6 +128,16 @@ $this->Html->script([
       $("#"+memberNum+"input").append("<input type='text' class='form-control' name='members["+memberNum+"][name]'>");
       $('#membersListButtonDiv').before("<br>");
       memberNum++;
+    });
+
+    $("#deleteMember").on( "click", function() {
+      var aux = memberNum - 1; //dane-se
+
+      if(aux > 0){
+        $('#'+aux+'input').remove();
+        $('#'+aux).remove();
+        memberNum--;
+      }
     });
 
   });

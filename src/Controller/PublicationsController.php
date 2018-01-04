@@ -96,18 +96,20 @@ class PublicationsController extends AppController
             $saved_publication = $this->Publications->save($publication);
             if ($saved_publication) {
                 $this->loadModel('PublicationParticipants');
-                $participantsList = $this->request['data']['participants'];
                 $warning = false;
-                foreach($participantsList as $participant_data){
+                if(isset($this->request['data']['participants'])){
+                    $participantsList = $this->request['data']['participants'];
+                    foreach($participantsList as $participant_data){
 
-                    $participant_data['publication_id'] = $saved_publication->id;
-                    $participant = $this->PublicationParticipants->newEntity();
-                    $participant = $this->PublicationParticipants->patchEntity($participant, $participant_data);
+                        $participant_data['publication_id'] = $saved_publication->id;
+                        $participant = $this->PublicationParticipants->newEntity();
+                        $participant = $this->PublicationParticipants->patchEntity($participant, $participant_data);
 
-                    if(!$this->PublicationParticipants->save($participant)){
-                        $warning = true;
+                        if(!$this->PublicationParticipants->save($participant)){
+                            $warning = true;
+                        }
+
                     }
-
                 }
                 if(!$warning){
                     $this->Flash->success(__('The {0} has been saved.', 'Publication'));
@@ -152,22 +154,24 @@ class PublicationsController extends AppController
             $saved_publication = $this->Publications->save($publication);
             if ($saved_publication) {
                 $this->loadModel('PublicationParticipants');
-                $participantsList = $this->request['data']['participants'];
                 $warning = false;
-                foreach($participantsList as $participant_data){
+                $this->PublicationParticipants->renewByPublication($saved_publication->id);
+                if(isset($this->request['data']['participants'])){
+                    $participantsList = $this->request['data']['participants'];
+                    foreach($participantsList as $participant_data){
 
-                    $participant_data['publication_id'] = $saved_publication->id;
-                    if(isset($participant_data['id'])){
-                        $participant = $this->PublicationParticipants->get($participant_data['id']);
-                    }else{
-                        $participant = $this->PublicationParticipants->newEntity();
+                        $participant_data['publication_id'] = $saved_publication->id;
+                       // if(isset($participant_data['id'])){
+                         //   $participant = $this->PublicationParticipants->get($participant_data['id']);
+                        //}else{
+                            $participant = $this->PublicationParticipants->newEntity();
+                       // }
+                        $participant = $this->PublicationParticipants->patchEntity($participant, $participant_data);
+
+                        if(!$this->PublicationParticipants->save($participant)){
+                            $warning = true;
+                        }
                     }
-                    $participant = $this->PublicationParticipants->patchEntity($participant, $participant_data);
-
-                    if(!$this->PublicationParticipants->save($participant)){
-                        $warning = true;
-                    }
-
                 }
                 if(!$warning){
                     $this->Flash->success(__('The {0} has been saved.', 'Publication'));

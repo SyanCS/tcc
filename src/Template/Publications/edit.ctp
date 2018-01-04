@@ -54,11 +54,11 @@
             <!-- Participants -->
             <h4 class="box-title"><?= __('Participants') ?></h4>
             <?php 
-            $i = 0;
+            $i = 1;
             foreach($publication->publication_participants as $participant){?>
 
-              <div class="row">
-                <div class="col-xs-3">
+              <div id="<?=$i?>" class="row">
+                <div id="<?=$i?>input" class="col-xs-3">
                   <?php
                   echo "<label>Participant ".$i.":</label>";
                   echo "<input type='text' value='".$participant['name']."' class='form-control' name='participants[".$i."][name]'>";
@@ -72,11 +72,13 @@
             <?php }?>
             <div class="row" id="participantsListButtonDiv">
               <div class="col-xs-2">
-                <button id="addParticipant" type="button" class="btn btn-block btn-info"><i class="fa fa-plus"></i><strong>&nbsp;&nbsp;&nbsp;Add Participant</strong></button> 
+                <span>
+                  <button id="addParticipant" type="button" class="btn btn-block btn-info"><i class="fa fa-plus"></i><strong>&nbsp;&nbsp;&nbsp;Add Participant</strong></button>
+                  <button id="deleteParticipant" type="button" class="btn btn-block btn-danger"><i class="fa fa-remove"></i><strong>&nbsp;&nbsp;&nbsp;Delete Participant</strong></button>
+                </span> 
+              </div>
+              <?php echo "<input type='hidden' id='participantsNum' value='".$i."'>"; ?>
             </div>
-            <?php echo "<input type='hidden' id='participantsNum' value='".$i."'>"; ?>
-          </div>
-          <br>
           <!-- /.box-body -->
           <div class="box-footer">
             <?= $this->Form->button(__('Save')) ?>
@@ -136,6 +138,18 @@ $this->Html->script([
       $("#"+participantNum+"input").append("<input type='text' class='form-control' name='participants["+participantNum+"][name]'>");
       $('#participantsListButtonDiv').before("<br>");
       participantNum++;
+    });
+
+    $("#deleteParticipant").on( "click", function() {
+      
+      var aux = participantNum - 1; //dane-se
+
+      if(aux > 0){
+        $('#'+aux+'input').remove();
+        $('#'+aux).remove();
+        participantNum--;
+      }
+
     });
 
   });
