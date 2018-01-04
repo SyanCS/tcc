@@ -216,8 +216,7 @@ if (file_exists($file)) {
       <!-- User Account: style can be found in dropdown.less -->
       <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <?php echo $this->Html->image('user2-160x160.jpg', array('class' => 'user-image', 'alt' => 'User Image')); ?>
-          <span class="hidden-xs">Alexander Pierce</span>
+          <span class="hidden-xs"><i class="fa  fa-smile-o"></i></span>
         </a>
         <ul class="dropdown-menu">
 
@@ -225,16 +224,15 @@ if (file_exists($file)) {
           <li class="user-header">
             <br>
             <p>
-              Alexander Pierce - Web Developer
-              <small>Member since Nov. 2012</small>
+              <?= $_SESSION['Auth']['User']['name']; ?>
             </p>
             <br>
             <p>
               <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                <a href="<?php echo $this->Url->build('/users/profile'); ?>" class="btn btn-default btn-flat">Profile</a>
               </div>
               <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <a href="<?php echo $this->Url->build('/users/logout'); ?>" class="btn btn-default btn-flat">Sign out</a>
               </div>
             </p>
           </li>

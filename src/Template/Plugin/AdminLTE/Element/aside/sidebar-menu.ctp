@@ -25,7 +25,7 @@ if (file_exists($file)) {
         <ul class="treeview-menu">
             <li><a href="<?php echo $this->Url->build('/users/profile'); ?>"><i class="fa fa-circle-o"></i> View</a></li>
             <!--li><a href="<?php echo $this->Url->build('/users/generate'); ?>"><i class="fa fa-circle-o"></i> Generate Profile</a></li-->
-            <li><a href="<?php echo $this->Url->build('/users/logout'); ?>"><i class="fa fa-circle-o"></i> Sign out</a></li>
+            <!--li><a href="<?php echo $this->Url->build('/users/logout'); ?>"><i class="fa fa-circle-o"></i> Sign out</a></li-->
         </ul>
     </li>
     <li class="header">MY INFOS</li>
