@@ -45,6 +45,22 @@
             </div>
 
             <div class="row">
+              <div class="col-xs-4">
+                <?php
+                echo $this->Form->input('location');
+                ?>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-4">
+                <?php
+                echo $this->Form->input('availability');
+                ?>
+              </div>
+            </div>
+
+            <div class="row">
               <div class="col-xs-3">
                 <?php
                 echo $this->Form->input('tel');

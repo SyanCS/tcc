@@ -128,6 +128,7 @@ class MainInfosController extends AppController
                 $mainInfo = $this->MainInfos->newEntity();
             }
             $mainInfo = $this->MainInfos->patchEntity($mainInfo, $this->request->data);
+            
             if ($this->MainInfos->save($mainInfo)) {
                 $this->Flash->success(__('The {0} has been saved.', 'Main Info'));
                 return $this->redirect(['action' => 'edit']);

@@ -20,6 +20,16 @@
                 ?>
                 <br><br>
                 <dl>
+                <?php if(!empty($user->main_infos[0]->location)){ ?>
+                    <dt>Location: </dt>
+                    <dd><?= $user->main_infos[0]->location ?></dd>
+                    <br>
+                <?php } ?>
+                <?php if(!empty($user->main_infos[0]->availability)){ ?>
+                    <dt>Availability: </dt>
+                    <dd><?= $user->main_infos[0]->availability ?></dd>
+                    <br>
+                <?php } ?>
                 <?php if(!empty($user->main_infos[0]->email)){ ?>
                     <dt>Email: </dt>
                     <dd><?= $user->main_infos[0]->email ?></dd>

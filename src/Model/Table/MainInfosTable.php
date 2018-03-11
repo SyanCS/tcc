@@ -77,6 +77,14 @@ class MainInfosTable extends Table
         $validator
             ->email('email')
             ->allowEmpty('email');
+
+        $validator
+            ->scalar('location')
+            ->allowEmpty('location');
+
+        $validator
+            ->scalar('availability')
+            ->allowEmpty('availability');
             
         return $validator;
     }

@@ -28,6 +28,7 @@
             echo $this->Form->input('photo');
             echo $this->Form->input('name');
             echo $this->Form->input('intro');
+            echo $this->Form->input('location');
             echo $this->Form->input('tel');
             echo $this->Form->input('tel2');
             echo $this->Form->input('email');

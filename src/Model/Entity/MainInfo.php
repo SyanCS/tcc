@@ -32,6 +32,8 @@ class MainInfo extends Entity
      */
     protected $_accessible = [
         'photo' => true,
+        'location' => true,
+        'availability' => true,
         'name' => true,
         'intro' => true,
         'tel' => true,
