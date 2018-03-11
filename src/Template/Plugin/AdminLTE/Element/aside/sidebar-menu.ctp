@@ -110,7 +110,7 @@ if (file_exists($file)) {
     </li>
     <li class="treeview">
         <a href="#">
-            <i class="fa fa-group"></i> <span>Researchs</span>
+            <i class="fa fa-group"></i> <span>Research Projects</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>

@@ -59,7 +59,7 @@
     <?php if(!empty($user->researchs)) { ?>
         <li class="treeview">
             <a  id="research" class="profileSection">
-                <i class="fa fa-group"></i> <span>Researchs</span>
+                <i class="fa fa-group"></i> <span>Research Projects</span>
                 
             </a>
         </li>
